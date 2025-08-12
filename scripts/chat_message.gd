@@ -1,21 +1,3 @@
-# gd_multiplayer_auth_sample
-
-# Information:
-  Sample test for rpc.
-
-  Learning how rpc mode for authority and any_peer works when work on by using the Notify Message to test.
-
-# Features:
- - [x] Host
- - [x] Join
- - [x] Notify Message Simple
- - [x] Simple Connection Status for fail connection.
- - [x] simple sent messages.
-# Notes:
-- very simple strip down to see how the code works with authority and any_peer.
-
-# script:
-```
 extends VBoxContainer
 
 @onready var line_edit_message: LineEdit = $LineEdit_Message
@@ -27,6 +9,8 @@ func _on_button_sent_pressed() -> void:
 	if multiplayer.is_server(): # check if this server
 		sent_message.rpc(line_edit_message.text) # server
 	else:
+		# send to server
+		#request_message.rpc(line_edit_message.text) #pass, client doublle copy
 		request_message.rpc_id(1,line_edit_message.text) #pass, single message
 		pass
 	pass
@@ -37,8 +21,9 @@ func request_message(message):
 	print("any_peer > call_remote > request_message")
 	print("is_server: ", multiplayer.is_server())
 	sent_message.rpc(message)
+	#pass
 
 @rpc("authority","call_local")
 func sent_message(message):
 	GameNetwork.notify_message(message)
-```
+	#pass

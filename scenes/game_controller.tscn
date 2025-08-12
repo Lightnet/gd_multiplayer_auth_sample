@@ -6,8 +6,8 @@
 [ext_resource type="Script" uid="uid://bp0sxucx411vn" path="res://scripts/ui_notify.gd" id="4_h843c"]
 [ext_resource type="PackedScene" uid="uid://c0nd1kvgndbaa" path="res://scenes/ui_notify_message.tscn" id="4_rc0pn"]
 [ext_resource type="Script" uid="uid://bkwlgtrl7brh2" path="res://scripts/ui_connect_status.gd" id="6_e85df"]
-[ext_resource type="Script" uid="uid://6p35oaox6i07" path="res://scenes/ui_test_sample.gd" id="7_burlk"]
-[ext_resource type="Script" uid="uid://h1isgvem2vb7" path="res://scenes/chat_message.gd" id="8_h0hye"]
+[ext_resource type="Script" uid="uid://6p35oaox6i07" path="res://scripts/ui_test_sample.gd" id="7_burlk"]
+[ext_resource type="Script" uid="uid://h1isgvem2vb7" path="res://scripts/chat_message.gd" id="8_h0hye"]
 
 [node name="GameController" type="Node"]
 script = ExtResource("1_vq0e2")
