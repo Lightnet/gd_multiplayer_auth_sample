@@ -29,7 +29,7 @@ func _on_btn_host_pressed() -> void:
 	label_network_type.text = "SERVER"
 	GameNetwork.start_server(line_edit_port.text.to_int())
 	ui_multiplayer.hide()
-	ui_access.show()
+	#ui_access.show()
 	ui_test_sample.show()
 	#pass
 	
@@ -38,7 +38,7 @@ func _on_btn_join_pressed() -> void:
 	GameNetwork.join_server(line_edit_address.text,line_edit_port.text.to_int())
 	Global.show_connection_status()
 	ui_multiplayer.hide()
-	ui_access.show()
+	#ui_access.show()
 	ui_test_sample.show()
 	#pass
 	

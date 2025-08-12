@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c0bifwyblssp"]
+[gd_scene load_steps=9 format=3 uid="uid://c0bifwyblssp"]
 
 [ext_resource type="Script" uid="uid://dcnav1hs860te" path="res://scripts/game_controller.gd" id="1_vq0e2"]
 [ext_resource type="Script" uid="uid://cuj5ae1xravsv" path="res://scripts/ui_control_host_join.gd" id="2_vc4nx"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c0nd1kvgndbaa" path="res://scenes/ui_notify_message.tscn" id="4_rc0pn"]
 [ext_resource type="Script" uid="uid://bkwlgtrl7brh2" path="res://scripts/ui_connect_status.gd" id="6_e85df"]
 [ext_resource type="Script" uid="uid://6p35oaox6i07" path="res://scenes/ui_test_sample.gd" id="7_burlk"]
+[ext_resource type="Script" uid="uid://h1isgvem2vb7" path="res://scenes/chat_message.gd" id="8_h0hye"]
 
 [node name="GameController" type="Node"]
 script = ExtResource("1_vq0e2")
@@ -324,7 +325,22 @@ text = "auth local"
 
 [node name="btn_auth_local2" type="Button" parent="CanvasLayer/UITestSample/VBoxContainer"]
 layout_mode = 2
-text = "auth remote"
+text = "any_peer remote"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/UITestSample"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 189.0
+offset_right = 182.0
+offset_bottom = 271.0
+script = ExtResource("8_h0hye")
+
+[node name="LineEdit_Message" type="LineEdit" parent="CanvasLayer/UITestSample/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Button_Sent" type="Button" parent="CanvasLayer/UITestSample/VBoxContainer2"]
+layout_mode = 2
+text = "Sent"
 
 [connection signal="pressed" from="CanvasLayer/UIMultiplayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/btn_host" to="CanvasLayer/UIMultiplayer" method="_on_btn_host_pressed"]
 [connection signal="pressed" from="CanvasLayer/UIMultiplayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/btn_join" to="CanvasLayer/UIMultiplayer" method="_on_btn_join_pressed"]
@@ -335,3 +351,4 @@ text = "auth remote"
 [connection signal="pressed" from="CanvasLayer/UITestSample/VBoxContainer/btn_auth_local0" to="CanvasLayer/UITestSample" method="_on_btn_auth_local_pressed"]
 [connection signal="pressed" from="CanvasLayer/UITestSample/VBoxContainer/btn_auth_local1" to="CanvasLayer/UITestSample" method="_on_btn_auth_local_1_pressed"]
 [connection signal="pressed" from="CanvasLayer/UITestSample/VBoxContainer/btn_auth_local2" to="CanvasLayer/UITestSample" method="_on_btn_auth_local_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/UITestSample/VBoxContainer2/Button_Sent" to="CanvasLayer/UITestSample/VBoxContainer2" method="_on_button_sent_pressed"]
