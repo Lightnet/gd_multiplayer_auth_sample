@@ -1,0 +1,337 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0bifwyblssp"]
+
+[ext_resource type="Script" uid="uid://dcnav1hs860te" path="res://scripts/game_controller.gd" id="1_vq0e2"]
+[ext_resource type="Script" uid="uid://cuj5ae1xravsv" path="res://scripts/ui_control_host_join.gd" id="2_vc4nx"]
+[ext_resource type="Script" uid="uid://dnt15k0x6nv0i" path="res://scripts/ui_access.gd" id="3_ts4rt"]
+[ext_resource type="Script" uid="uid://bp0sxucx411vn" path="res://scripts/ui_notify.gd" id="4_h843c"]
+[ext_resource type="PackedScene" uid="uid://c0nd1kvgndbaa" path="res://scenes/ui_notify_message.tscn" id="4_rc0pn"]
+[ext_resource type="Script" uid="uid://bkwlgtrl7brh2" path="res://scripts/ui_connect_status.gd" id="6_e85df"]
+[ext_resource type="Script" uid="uid://6p35oaox6i07" path="res://scenes/ui_test_sample.gd" id="7_burlk"]
+
+[node name="GameController" type="Node"]
+script = ExtResource("1_vq0e2")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UIDebug" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UIDebug"]
+layout_mode = 0
+offset_right = 180.0
+offset_bottom = 159.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UIDebug/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/UIDebug/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Network Type:"
+
+[node name="Label_NetworkType" type="Label" parent="CanvasLayer/UIDebug/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "None"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/UIDebug/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/UIDebug/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Clients:"
+
+[node name="ClientCounts" type="Label" parent="CanvasLayer/UIDebug/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "0"
+
+[node name="UIMultiplayer" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_vc4nx")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/UIMultiplayer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/UIMultiplayer/CenterContainer"]
+custom_minimum_size = Vector2(256, 82.6)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UIMultiplayer/CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UIMultiplayer/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UIMultiplayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="LineEdit_Address" type="LineEdit" parent="CanvasLayer/UIMultiplayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(132, 0)
+layout_mode = 2
+text = "127.0.0.1"
+placeholder_text = "IP Address"
+max_length = 16
+emoji_menu_enabled = false
+
+[node name="Label" type="Label" parent="CanvasLayer/UIMultiplayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = ":"
+
+[node name="LineEdit_Port" type="LineEdit" parent="CanvasLayer/UIMultiplayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "4242"
+placeholder_text = "Port"
+alignment = 1
+max_length = 4
+emoji_menu_enabled = false
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/UIMultiplayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/UIMultiplayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "User:"
+
+[node name="LineEdit_UserName" type="LineEdit" parent="CanvasLayer/UIMultiplayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "User Name"
+max_length = 16
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer/UIMultiplayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/UIMultiplayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Passphrase:"
+
+[node name="LineEdit_Passphrase" type="LineEdit" parent="CanvasLayer/UIMultiplayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Passphrase"
+max_length = 16
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/UIMultiplayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="btn_host" type="Button" parent="CanvasLayer/UIMultiplayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Host"
+
+[node name="btn_join" type="Button" parent="CanvasLayer/UIMultiplayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Join"
+
+[node name="UIAccess" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_ts4rt")
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/UIAccess"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/UIAccess/CenterContainer"]
+custom_minimum_size = Vector2(256, 128)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/UIAccess/CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UIAccess/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/UIAccess/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/UIAccess/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "User:"
+
+[node name="LineEdit_UserName" type="LineEdit" parent="CanvasLayer/UIAccess/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "player1"
+placeholder_text = "User Name"
+max_length = 16
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer/UIAccess/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/UIAccess/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Passphrase:"
+
+[node name="LineEdit_Passphrase" type="LineEdit" parent="CanvasLayer/UIAccess/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "pass123"
+placeholder_text = "Passphrase"
+max_length = 16
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/UIAccess/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="btn_register" type="Button" parent="CanvasLayer/UIAccess/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Register"
+
+[node name="btn_login" type="Button" parent="CanvasLayer/UIAccess/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Login"
+
+[node name="UINotify" type="Control" parent="CanvasLayer" groups=["notify"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("4_h843c")
+
+[node name="VBC_Messages" type="VBoxContainer" parent="CanvasLayer/UINotify"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -232.0
+offset_bottom = 647.0
+grow_horizontal = 0
+
+[node name="UINotifyMessage" parent="CanvasLayer/UINotify/VBC_Messages" instance=ExtResource("4_rc0pn")]
+layout_mode = 2
+
+[node name="UIConnectStatus" type="Control" parent="CanvasLayer" groups=["connectionstatus"]]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_e85df")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/UIConnectStatus"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/UIConnectStatus"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UIConnectStatus/CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/UIConnectStatus/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Connecting..."
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/UIConnectStatus/CenterContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/UIConnectStatus/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Time Out ( 30 secs):"
+
+[node name="Label2" type="Label" parent="CanvasLayer/UIConnectStatus/CenterContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "00"
+
+[node name="UITestSample" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_burlk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UITestSample"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 34.0
+offset_right = 182.0
+offset_bottom = 253.0
+
+[node name="Button" type="Button" parent="CanvasLayer/UITestSample/VBoxContainer"]
+layout_mode = 2
+text = "Test Notify"
+
+[node name="btn_auth_local0" type="Button" parent="CanvasLayer/UITestSample/VBoxContainer"]
+layout_mode = 2
+text = "auth local"
+
+[node name="btn_auth_local1" type="Button" parent="CanvasLayer/UITestSample/VBoxContainer"]
+layout_mode = 2
+text = "auth local"
+
+[node name="btn_auth_local2" type="Button" parent="CanvasLayer/UITestSample/VBoxContainer"]
+layout_mode = 2
+text = "auth remote"
+
+[connection signal="pressed" from="CanvasLayer/UIMultiplayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/btn_host" to="CanvasLayer/UIMultiplayer" method="_on_btn_host_pressed"]
+[connection signal="pressed" from="CanvasLayer/UIMultiplayer/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/btn_join" to="CanvasLayer/UIMultiplayer" method="_on_btn_join_pressed"]
+[connection signal="pressed" from="CanvasLayer/UIAccess/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/btn_register" to="CanvasLayer/UIAccess" method="_on_btn_register_pressed"]
+[connection signal="pressed" from="CanvasLayer/UIAccess/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/btn_login" to="CanvasLayer/UIAccess" method="_on_btn_login_pressed"]
+[connection signal="visibility_changed" from="CanvasLayer/UIConnectStatus" to="CanvasLayer/UIConnectStatus" method="_on_visibility_changed"]
+[connection signal="pressed" from="CanvasLayer/UITestSample/VBoxContainer/Button" to="CanvasLayer/UITestSample" method="_on_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UITestSample/VBoxContainer/btn_auth_local0" to="CanvasLayer/UITestSample" method="_on_btn_auth_local_pressed"]
+[connection signal="pressed" from="CanvasLayer/UITestSample/VBoxContainer/btn_auth_local1" to="CanvasLayer/UITestSample" method="_on_btn_auth_local_1_pressed"]
+[connection signal="pressed" from="CanvasLayer/UITestSample/VBoxContainer/btn_auth_local2" to="CanvasLayer/UITestSample" method="_on_btn_auth_local_2_pressed"]
